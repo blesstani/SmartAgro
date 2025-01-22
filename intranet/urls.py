@@ -1,7 +1,8 @@
 
 from django.urls import path
 from . import views
-from .views import CustomerListAPIView
+from .views import EmployeeListAPIView
+
 
 urlpatterns = [
     
@@ -13,6 +14,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('document/',views.upload_file, name='document'),
     path('supplier/',views.supplier, name='supplier'),
-    path('api/customers/', CustomerListAPIView.as_view(), name='customer-list-api'),
+    path('api/employees/', EmployeeListAPIView.as_view(), name='employee-list-api'),
     
 ]

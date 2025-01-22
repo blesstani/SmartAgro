@@ -54,11 +54,11 @@ def upload_file(request):
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Customer
-from .serializers import CustomerSerializer
+from .models import Employee
+from .serializers import EmployeeSerializer
 
-class CustomerListAPIView(APIView):
+class EmployeeListAPIView(APIView):
     def get(self, request):
-        customers = Customer.objects.all()
-        serializer = CustomerSerializer(customers, many=True)
+        employees = Employee.objects.all()
+        serializer = EmployeeSerializer(employees, many=True)
         return Response(serializer.data)
