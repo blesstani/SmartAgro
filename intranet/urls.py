@@ -1,6 +1,7 @@
 
 from django.urls import path
 from . import views
+from .views import CustomerListAPIView
 
 urlpatterns = [
     
@@ -12,5 +13,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('document/',views.upload_file, name='document'),
     path('supplier/',views.supplier, name='supplier'),
+    path('api/customers/', CustomerListAPIView.as_view(), name='customer-list-api'),
     
 ]
