@@ -28,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-r1(j7728e7ti0)=tv9bo66g*@p5db%j!z^%ajmkoc^&jl!^wjs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['smartagro-group6.herokuapp.com']
 
 
 # Application definition
@@ -79,17 +79,14 @@ WSGI_APPLICATION = 'smartAgro.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-# db_from_env= dj_database_url.config(conn_max_age=600)
-# DATABASES=['default'].update(db_from_env)
+db_from_env= dj_database_url.config(conn_max_age=600)
+DATABASES=['default'].update(db_from_env)
 
-DATABASES = {
-        "default": dj_database_url.config(
-            env="DATABASE_URL",
-            conn_max_age=600,
-            conn_health_checks=True,
-            ssl_require=True,
-        ),
-    }
+# DATABASES = {
+#         "default": dj_database_url.config(
+#             conn_max_age=600
+#         ),
+#     }
 
 # DATABASES = {
 #     'default': {
@@ -144,6 +141,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+STATTIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'assets'),
