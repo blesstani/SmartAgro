@@ -16,5 +16,5 @@ urlpatterns = [
     path('document/',views.upload_file, name='document'),
     path('supplier/',views.supplier, name='supplier'),
     path('api/employees/', EmployeeListAPIView.as_view(), name='employee-list-api'),
-    path('documents/', upload_file, name='upload_file'),
+    path('documents/', views.upload_file, name='upload_file'),
 ]

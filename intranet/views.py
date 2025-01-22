@@ -43,15 +43,6 @@ def news_detail(request, pk):
     news_item = News.objects.get(pk=pk)
     return render(request, 'intranet/news_detail.html', {'news_item': news_item})
 
-def upload_file(request):
-    if request.method == 'POST' and request.FILES['file']:
-        uploaded_file = request.FILES['file']
-        # Do something with the uploaded file
-        return render(request, 'intranet/document.html', {'file_name': uploaded_file.name})
-    else:
-        html = '<html lang="en"><body>TRY AGAIN.</body></html>'
-    return HttpResponse(html)
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Employee
