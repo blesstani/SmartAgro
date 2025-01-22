@@ -1,0 +1,31 @@
+{%extends 'base_template.html'%}
+{%block content%}
+  <main class="container mt-4">
+    <h2 class="mb-4">Tasks</h2>
+    
+    <div class="row" id="tasks-container">
+      <!-- Example Task Card -->
+      {% for task in tasks %}
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{task.task_titiel}}</h5>
+            <p class="card-text">
+              <strong>Description:</strong> {{task.task_description}}<br>
+              <strong>Status:</strong> {{task.status}}<br>
+              <strong>Creator:</strong> {{task.creator}}<br>
+              <strong>Performer:</strong> {{task.performer}}
+              <br>
+              <strong>Due Date:</strong> <i> {{task.due_date}} </i>
+            </p>
+        </div>
+      </div>
+      
+    </div>
+    {% endfor %}
+  </main>
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 Smart AgroLTD. All rights reserved.</p>
+  </footer>
+{%endblock%}
+

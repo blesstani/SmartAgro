@@ -1,0 +1,47 @@
+{% include "base_template.html" %}
+ 
+{%block content%}
+ <div class="container mt-5">
+        <h2 class="mb-4">Transaction List</h2>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Transaction Type</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Employee</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ transaction.transaction_type }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.date }}</td>
+                    <td>
+                      <span class="badge 
+                        {% if transaction.status == 'pending' %}bg-warning text-dark
+                        {% elif transaction.status == 'completed' %}bg-success
+                        {% elif transaction.status == 'failed' %}bg-danger
+                        {% endif %}">
+                        {{ transaction.status|title }}
+                      </span>
+                    </td>
+                    <td>{{ transaction.employee}}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">No transactions found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  
+    <footer class="bg-dark text-white text-center py-3">
+      <p>&copy; 2025 Smart AgroLTD. All rights reserved.</p>
+    </footer>
+{%endblock%}

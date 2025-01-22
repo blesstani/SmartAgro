@@ -1,0 +1,48 @@
+{% extends 'base_template.html'%}
+
+{%block content%}
+  <main class="container mt-4">
+    <h2 class="mb-4">Suppliers</h2>
+    <div class="row" id="employee-container">
+      <!-- Example Employee Card -->
+      {% for supplier in suppliers %}
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+        <div class="card">
+          <div class="d-flex align-items-center p-3">
+            <!-- Profile Picture -->
+            <img 
+              src="{{ supplier.profile_pic.url }}" 
+  
+              alt="supplier Photo" 
+            >
+            <!-- supplier Details -->
+            <div>
+              
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <strong class="card-title mb-0">SUPPLIER NAME: {{supplier.first_name}} {{supplier.last_name}}</strong>
+              <br>
+              <strong>PRODUCT: {{supplier.email}} </strong> <br><br>
+              
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- Dynamic employee cards will go here -->
+    </div>
+  </main>
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 Smart AgroLTD. All rights reserved.</p>
+  </footer>
+ {%endblock%}
+
+ 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+

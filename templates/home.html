@@ -1,0 +1,47 @@
+
+{% extends "base_template.html" %}
+
+{% block content%}
+<div class="container mt-4">
+  <div class="row">
+    <!-- Main Content -->
+    <div class="col-lg-9">
+      <!-- Recent News Section -->
+      <section class="mb-4">
+        <h2>Recent News</h2>
+        <div id="news-section" class="row">
+          {% for news in random_news %}
+          <div class="col-md-4 mb-3">
+            <div class="card">
+                <img src="{{ news.image.url }}" class="card-img-top fixed-size-img" alt="Article Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ news.title }}</h5>
+                    <p class="card-text">{{ news.content|truncatewords:20 }}</p>
+                    <a href="{% url 'news_detail' news.id %}" {{ news.title }}" class="btn btn-primary btn-sm">Read More</a>
+                </div>
+            </div>
+        </div>
+          {% endfor %}
+          
+      </section>
+    </div>
+
+    <!-- Document Upload Section (Aside) -->
+    <aside class="col-lg-3">
+      <section class="mb-4">
+        <h2>Upload Documents</h2>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="file" class="form-control mb-2" id="fileUpload">
+          <button type="submit" class="btn btn-primary w-100">Upload</button>
+        </form>
+      </section>
+    </aside>
+  </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 Smart AgroLTD. All rights reserved.</p>
+</footer>
+
+  {% endblock%}

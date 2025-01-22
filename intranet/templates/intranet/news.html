@@ -1,0 +1,38 @@
+{% extends 'base_template.html'%}
+
+{%block content%}
+    <style>
+        .fixed-size-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+
+
+    <div class="container my-5">
+        <header class="text-center mb-4">
+            <h1 class="display-4">News Today</h1>
+            <p class="text-muted">Stay informed with the latest updates</p>
+        </header>
+
+        <div class="row">
+            {% for article in articles %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ article.image.url }}" class="card-img-top fixed-size-img" alt="Article Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <p class="card-text">{{ article.content|truncatewords:20 }}</p>
+                        <a href="{% url 'news_detail' article.id %}" {{ article.title }}" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 Smart AgroLTD. All rights reserved.</p>
+</footer>
+{%endblock%}
+

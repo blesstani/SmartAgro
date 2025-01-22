@@ -1,0 +1,1 @@
+web: gunicorn smartAgro.wsgi:application --log-file -
