@@ -79,8 +79,8 @@ WSGI_APPLICATION = 'smartAgro.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-# db_from_env= dj_database_url.config(conn_max_age=600)
-# DATABASES=['default'].update(db_from_env)
+db_from_env= dj_database_url.config(conn_max_age=600)
+DATABASES=['default'].update(db_from_env)
 
 # DATABASES = {
 #         "default": dj_database_url.config(
@@ -88,12 +88,12 @@ WSGI_APPLICATION = 'smartAgro.wsgi.application'
 #         ),
 #     }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgressql',
@@ -140,8 +140,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
 
+# Static files (CSS, JavaScript, Images)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'assets'),
 )
