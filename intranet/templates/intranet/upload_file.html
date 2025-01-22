@@ -1,7 +1,6 @@
-{% include base_template.html%}
-{% block content%}
+{%extends 'base_template.html'%}
+{%block content%}
 
-<body class="bg-light">
 
   <div class="container py-5">
     <!-- Page Header -->
@@ -15,12 +14,11 @@
       <div class="col-lg-6">
         <div class="card shadow">
           <div class="card-body">
-            <h2 class="card-title text-center mb-4">Upload Your File</h2>
             <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
               {% csrf_token %}
               <div class="mb-3">
                 <label for="fileUpload" class="form-label">Select File</label>
-                {{ form.file|add_class:"form-control" }}
+                {{ form.file}}
               </div>
               <button type="submit" class="btn btn-primary w-100">Upload</button>
             </form>
@@ -56,6 +54,4 @@
   <footer class="bg-dark text-white text-center py-3">
     <p>&copy; 2025 Smart AgroLTD. All rights reserved.</p>
   </footer>
-</body>
-
 {% endblock%}

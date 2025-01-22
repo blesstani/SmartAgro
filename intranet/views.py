@@ -62,9 +62,8 @@ def upload_file(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('upload_file')  # Redirect to avoid duplicate form submission
     else:
         form = DocumentForm()
 
-    documents = Document.objects.all()  # Fetch all uploaded files
-    return render(request, 'upload_file.html', {'form': form, 'documents': documents})
+    documents = Document.objects.all()  # Retrieve all uploaded files
+    return render(request, 'intranet/upload_file.html', {'form': form, 'documents': documents})
