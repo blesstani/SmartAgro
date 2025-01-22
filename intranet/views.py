@@ -62,3 +62,18 @@ class EmployeeListAPIView(APIView):
         employees = Employee.objects.all()
         serializer = EmployeeSerializer(employees, many=True)
         return Response(serializer.data)
+
+from .models import Document
+from .forms import DocumentForm
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('upload_file')  # Redirect to avoid duplicate form submission
+    else:
+        form = DocumentForm()
+
+    documents = Document.objects.all()  # Fetch all uploaded files
+    return render(request, 'upload_file.html', {'form': form, 'documents': documents})
