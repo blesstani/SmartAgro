@@ -79,14 +79,14 @@ WSGI_APPLICATION = 'smartAgro.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-db_from_env= dj_database_url.config(conn_max_age=600)
-DATABASES=['default'].update(db_from_env)
+# db_from_env= dj_database_url.config(conn_max_age=600)
+# DATABASES=['default'].update(db_from_env)
 
-# DATABASES = {
-#         "default": dj_database_url.config(
-#             conn_max_age=600
-#         ),
-#     }
+DATABASES = {
+        "default": dj_database_url.config(
+            conn_max_age=600
+        ),
+    }
 
 # DATABASES = {
 #     'default': {
@@ -143,7 +143,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-STATTIC_ROOT = os.path.join(BASE_DIR,'media')
+STATTIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'assets'),
